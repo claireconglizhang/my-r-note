@@ -2,13 +2,14 @@
 title: "My R Notes for Website Management"
 author: "Congli (Claire) Zhang"
 date: "Starting at: 7/25/2021"
-output:
-  html_document:
-    keep_md: yes
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, 
+                      warning = FALSE, 
+                      message = FALSE, 
+                      fig.align = "center")
 if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
 pacman::p_load(tidyverse, dplyr, knitr, lfe, arsenal, ggpubr, broom, stargazer, fixest, modelsummary, kableExtra)
 theme_set(theme_classic())
