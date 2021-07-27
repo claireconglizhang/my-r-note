@@ -7,12 +7,7 @@ output:
     keep_md: yes
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
-pacman::p_load(tidyverse, dplyr, knitr, lfe, arsenal, ggpubr, broom, stargazer, fixest, modelsummary, kableExtra)
-theme_set(theme_classic())
-```
+
 
 This is my notes of R code for data manipulation and management.
 
@@ -26,7 +21,8 @@ Organizing the notes using:
 ## 1. Importing and exporting data
 
 When you don't have a project created beforehand:
-```{r}
+
+```r
 # here::i_am("code/filename.R")
 # fwrite(df, "data/df.csv")
 ```
@@ -37,28 +33,82 @@ When you don't have a project created beforehand:
 ### Base R, table()
 create tabular results of categorical variables.
 check for one variable:
-```{r}
+
+```r
 table(mtcars$cyl) # does not report NA's
+```
+
+```
+## 
+##  4  6  8 
+## 11  7 14
+```
+
+```r
 table(mtcars$cyl, exclude = NULL) # reports NA's
+```
+
+```
+## 
+##  4  6  8 
+## 11  7 14
+```
+
+```r
 table(mtcars$cyl, exclude = "4")
+```
+
+```
+## 
+##  6  8 
+##  7 14
+```
+
+```r
 table(mtcars$gear > 4)
+```
+
+```
+## 
+## FALSE  TRUE 
+##    27     5
+```
+
+```r
 table(mtcars$gear > 4, useNA = "always")
 ```
 
+```
+## 
+## FALSE  TRUE  <NA> 
+##    27     5     0
+```
+
 contingency table for two variables:
-```{r}
+
+```r
 table(mtcars$cyl, is.na(mtcars$carb))
+```
+
+```
+##    
+##     FALSE
+##   4    11
+##   6     7
+##   8    14
 ```
 
 ### dplyr::mutate()
 recode:
-```{r}
+
+```r
 foo <- mtcars %>% 
   mutate(cyl = recode(cyl, "4" = "four", "6" = "six", "8" = "eight"))
 ```
 
 panel data strategy - you may want to set flag for cases when you have missing values on a time-invariant variable, gender for example, you want to code the missing value from a certain year by using the non-missing value from other years:
-```{r}
+
+```r
 foo <- mtcars %>%
   group_by(cyl) %>% 
   arrange(gear) %>% 
