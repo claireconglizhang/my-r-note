@@ -1,0 +1,67 @@
+---
+title: "My R Notes for Xaringan Slides"
+author: "Congli (Claire) Zhang"
+date: "Starting at: 7/28/2021"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      warning = FALSE, 
+                      message = FALSE, 
+                      fig.align = "center")
+if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
+pacman::p_load(tidyverse, dplyr, knitr, lfe, arsenal, ggpubr, broom, stargazer, fixest, modelsummary, kableExtra)
+theme_set(theme_classic())
+```
+
+This is my notes of R code for creating and upgrading Xaringan slides.
+
+## 1. The UO template and slightly modified CSS I've been using
+
+The yaml (extract this comment from the below code chunk):
+
+```{r}
+# output:
+#   xaringan::moon_reader:
+#     css: [default, uo, nhsr-fonts]
+#     lib_dir: libs
+#     nature:
+#       highlightStyle: github
+#       highlightLines: true
+#       countIncrementalSlides: false
+```
+
+
+The simplest way to modify css to my current knowledge is to insert this to the beginning of the RMD file (extract this comment from the below code chunk). The goal is to change font type, font size, and the margins.
+
+```{r}
+# <style type="text/css">
+# .remark-slide-content {
+#     font-family: font-family: 'Alegreya Sans', sans-serif;
+#     font-size: 24px;
+#     padding: 1em 2em 1em 2em;
+# }
+# </style>
+```
+
+Potentially, more can be done after I learn more css language.
+
+## 2. The {flipbookr} package
+
+{flipbookr} can be used in xaringan slides to simultaneously show code and result line-by-line. The workflow below is borrowed from [Gina Reynolds's tutorial](https://evamaerey.github.io/flipbooks/about).
+
+ * Install the slide show platform Xaringan - install.packages("xaringan")
+ * Install flipbookr - remotes::install_github("EvaMaeRey/flipbookr")
+ * Restart R
+ * Get the template in RStudio via: File -> New File -> RMarkdown -> From Template -> A Minimal Flipbook
+ * Use this template to get started or replace with your own pipelines
+ * Compile your document - “Knit” in RStudio
+ * Explore your flipbook!
+ 
+For example, [this flipbook](https://evamaerey.github.io/data_manipulation/data.table#1) is exactly what I need to refresh my knowledge about the awesome {data.table}. I'm forgetting it because I didn't have the opportunity to use it everyday - G, how I wish more and more people would give up {dplyr} a bit and learn about the beauty of {data.table} (okay, I see I'm drifting a bit further away).
+
+
+
+
+

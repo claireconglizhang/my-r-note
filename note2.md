@@ -58,6 +58,8 @@ work to GitHub (don’t know how? [see
 here](https://happygitwithr.com/rstudio-git-github.html)).
 
 Step 8. Publish your website on GitHub Page by simply going back to your
-GitHub repository and find the configuration page in “Settings” -
+GitHub repository and finishing the configuration page in “Settings” -
 “Pages”. When it’s done, you’ll be given a url for your website. Check
 it out and start from there.
+
+## 
