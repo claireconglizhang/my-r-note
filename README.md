@@ -6,6 +6,6 @@ I don't want to create a website because that requires me to make the repo publi
 
 While, here comes the MD files, the GitHub-friendly document, the bridge from RMD to HTML/PDF/WORD.   
 MD file is such a BRILLIANT solution.  
-Wanna check these MDs out?  
+Wanna check these MDs out?  [Note 1, data management](./note1.md); [Note 2, website](./note2.md); [Note 3, Xaringan slides](./note3.md).
 
 Also, any comments, suggestions, and ideas about my notes are greatly appreciated! Please simply fork this repo and let's communicate!  
