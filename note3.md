@@ -60,3 +60,21 @@ exactly what I need to refresh my knowledge about the awesome
 use it everyday - G, how I wish more and more people would give up
 {dplyr} a bit and learn about the beauty of {data.table} (okay, I see
 I’m drifting a bit further away).
+
+## 3. Inserting images to slides
+
+So far I’ve learned two ways to insert images in the slides.
+
+First, simply include the code in the text (don’t put them in a chunk):
+
+``` r
+# [image name](./folder/image name) 
+# ![](./folder/image name)
+```
+
+this approach doesn’t allow you to easily change the size or position,
+Xie once complained this and came up with a fairly complicated
+[solution](https://github.com/yihui/xaringan/issues/80).
+
+Alternatively, use knitr::include_graphics, more flexible (more coding
+too):

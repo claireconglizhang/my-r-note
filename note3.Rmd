@@ -61,6 +61,27 @@ Potentially, more can be done after I learn more css language.
  
 For example, [this flipbook](https://evamaerey.github.io/data_manipulation/data.table#1) is exactly what I need to refresh my knowledge about the awesome {data.table}. I'm forgetting it because I didn't have the opportunity to use it everyday - G, how I wish more and more people would give up {dplyr} a bit and learn about the beauty of {data.table} (okay, I see I'm drifting a bit further away).
 
+## 3. Inserting images to slides
+
+So far I've learned two ways to insert images in the slides.
+
+First, simply include the code in the text (don't put them in a chunk):
+
+```{r}
+# [image name](./folder/image name) 
+# ![](./folder/image name)
+```
+
+this approach doesn't allow you to easily change the size or position, Xie once complained this and came up with a fairly complicated [solution](https://github.com/yihui/xaringan/issues/80).
+
+Alternatively, use knitr::include_graphics, more flexible (more coding too):
+
+```{r, out.width = "100%", fig.align = "center", echo = FALSE}
+# knitr::include_graphics("./folder/image name")
+```
+
+
+
 
 
 

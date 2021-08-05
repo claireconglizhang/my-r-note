@@ -28,16 +28,33 @@ Organizing the notes using:
 
 When you don't have a project created beforehand:
 ```{r}
-# here::i_am("code/filename.R")
-# fwrite(df, "data/df.csv")
+# here::i_am("your code folder/your R or RMD file")
+# datatable <- rio::import(here::here("your data folder", "your data file"))
+# rio::export(your datatable, here::here("your data folder", "your data file"))
+```
+
+When you have an existing project:
+```{r}
+# datatable <- rio::import(here::here("your data folder", "your data file"))
+# rio::export(your datatable, here::here("your data folder", "your data file"))
 ```
 
 
 ## 2. Inspecting the dataset
 
-### Base R, table()
-create tabular results of categorical variables.
-check for one variable:
+### Base R - handy, quick, and flexible
+
+#### head()
+
+arrange by a variable and show whatever number of observations you like:
+```{r}
+head(mtcars %>% arrange(desc(gear)), 10) 
+```
+
+
+#### table()
+
+create tabular results of categorical variables. check for one variable:
 ```{r}
 table(mtcars$cyl) # does not report NA's
 table(mtcars$cyl, exclude = NULL) # reports NA's
@@ -51,7 +68,65 @@ contingency table for two variables:
 table(mtcars$cyl, is.na(mtcars$carb))
 ```
 
+binned frequency table:
+```{r}
+table(cut(mtcars$cyl, seq(min(mtcars$cyl), max(mtcars$cyl), by = 0.5)))
+```
+
+### gtsummary::tbl_summary()
+
+Instantly fell in love with this package/function when I was exhausting options to create the infamous "Table 1". Made a habit of doing this for first inspection of new data.
+
+the default result:
+```{r}
+library(gtsummary)
+tbl_summary(mtcars)
+```
+
+the default result for comparison table:
+```{r}
+tbl_summary(mtcars, by = cyl)
+```
+
+it's arguments are not super handy though:
+```{r}
+mtcars %>% 
+  tbl_summary(by = cyl) %>%
+  modify_header(label ~ "**Key Variables**")
+```
+
+just include a few variables:
+```{r}
+mtcars %>% 
+  tbl_summary(by = cyl,
+              include = c(cyl, mpg, vs, gear),
+              statistic = list(all_continuous() ~ "{mean} ({sd})",
+                               all_categorical() ~ "{n} / {N} ({p}%)")) %>% 
+  add_p() %>% 
+  modify_header(label ~ "**Key Variables**")
+```
+
+
+get fancier with the names of the variables and levels
+```{r}
+mtcars$gear <- factor(mtcars$gear, levels = c(3, 4, 5), labels = c("Three", "Four", "Five"))
+
+mtcars %>% 
+  tbl_summary(by = cyl,
+              include = c(cyl, mpg, vs, gear),
+              label = list(mpg = "MPG",
+                           vs = "VS",
+                           gear = "GEAR"),
+              statistic = list(all_continuous() ~ "{mean} ({sd})",
+                               all_categorical() ~ "{n} / {N} ({p}%)")) %>% 
+  add_p() %>% 
+  modify_header(label ~ "**Key Variables**")
+```
+
+## 3. Cleaning and tidying data
+
 ### dplyr::mutate()
+
 recode:
 ```{r}
 foo <- mtcars %>% 
@@ -66,9 +141,4 @@ foo <- mtcars %>%
   mutate(last_obs_fg = row_number() == n()) %>% 
   mutate(carb_new = ifelse(carb == 4, carb, carb[last_obs_fg == TRUE]))
 ```
-
-
-## 3. Cleaning and tidying data
-
-
 
