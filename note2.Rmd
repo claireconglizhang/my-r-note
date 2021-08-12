@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE,
                       message = FALSE, 
                       fig.align = "center")
 if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
-pacman::p_load(tidyverse, dplyr, knitr, lfe, arsenal, ggpubr, broom, stargazer, fixest, modelsummary, kableExtra)
+pacman::p_load(tidyverse, dplyr, knitr, lfe, arsenal, ggpubr, broom, stargazer, fixest, gtsummary, huxtable)
 theme_set(theme_classic())
 ```
 
@@ -41,8 +41,6 @@ Step 7. Click the "Git" button in your upper right pane and push your work to Gi
 
 Step 8. Publish your website on GitHub Page by simply going back to your GitHub repository and finishing the configuration page in "Settings" - "Pages". When it's done, you'll be given a url for your website. Check it out and start from there. 
 
-
-## 
 
 
 

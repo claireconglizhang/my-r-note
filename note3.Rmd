@@ -11,11 +11,10 @@ knitr::opts_chunk$set(echo = TRUE,
                       message = FALSE, 
                       fig.align = "center")
 if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
-pacman::p_load(tidyverse, dplyr, knitr, lfe, arsenal, ggpubr, broom, stargazer, fixest, modelsummary, kableExtra)
+pacman::p_load(tidyverse, dplyr, knitr, lfe, arsenal, ggpubr, broom, stargazer, fixest, gtsummary, huxtable)
 theme_set(theme_classic())
 ```
 
-This is my notes of R code for creating and upgrading Xaringan slides.
 
 ## 1. The UO template and slightly modified CSS I've been using
 

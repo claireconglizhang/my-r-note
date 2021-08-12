@@ -11,11 +11,9 @@ knitr::opts_chunk$set(echo = TRUE,
                       message = FALSE, 
                       fig.align = "center")
 if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
-pacman::p_load(tidyverse, dplyr, knitr, lfe, arsenal, ggpubr, broom, stargazer, fixest, modelsummary, kableExtra)
+pacman::p_load(tidyverse, dplyr, knitr, lfe, arsenal, ggpubr, broom, stargazer, fixest, gtsummary, huxtable)
 theme_set(theme_classic())
 ```
-
-This is my notes of R code for data manipulation and management.
 
 Organizing the notes using:
 
@@ -95,7 +93,8 @@ mtcars %>%
   modify_header(label ~ "**Key Variables**")
 ```
 
-just include a few variables:
+just include a few variables (this is important, tbl_summary gives you medians rather than means by default for continuous variables, to get it to give you means, include ths code below):
+
 ```{r}
 mtcars %>% 
   tbl_summary(by = cyl,
@@ -127,13 +126,26 @@ mtcars %>%
 
 ### dplyr::mutate()
 
-recode:
+#### case_when:
+
+Simply assigning NAs will give you error and [here](https://github.com/tidyverse/dplyr/issues/3202) is why and also a great solution.
+```{r}
+foo <- mtcars %>% 
+  mutate(cyl = case_when(cyl == 4 ~ 1,
+                         cyl == 6 ~ NA_real_,
+                         TRUE ~ 0 ))
+```
+
+
+#### recode:
+
 ```{r}
 foo <- mtcars %>% 
   mutate(cyl = recode(cyl, "4" = "four", "6" = "six", "8" = "eight"))
 ```
 
 panel data strategy - you may want to set flag for cases when you have missing values on a time-invariant variable, gender for example, you want to code the missing value from a certain year by using the non-missing value from other years:
+
 ```{r}
 foo <- mtcars %>%
   group_by(cyl) %>% 
