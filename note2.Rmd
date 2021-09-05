@@ -54,6 +54,35 @@ Step 6. Publish your website on GitHub Page. Going back to your GitHub repositor
 
 Note that during the configuration, make sure to publish the pages under the master branch then docs folder.  
 
+## 2. Blogdown
+
+Yes, blogdown and bookdown are all in the R Markdown family. While distill package is great, you cannot help but thinking since we're using Rmd files all the time, how about check out its siblings - blogdown can help you build a nice website and bookdown can help you publish your book online.
+
+So here comes [blogdown](https://bookdown.org/yihui/blogdown/). 
+
+Why blogdown?
+
+ * Build a website that is well designed, can be easily maintained
+   + Many themes available (need time to learn of course)
+   + LiveReload feature: serve_site() enables your website to be automatically refreshed after you edit your source file and save it
+  
+ * Based on R Markdown (flatten your learning curve a bit)
+   + (relatively) simple syntax for writing documents
+   + the simpler, the more portable (you are giving yourself the chance to convert your blog posts to PDF and publish to journals or even books in the future)
+   + not only convenient (maintenance), but also reproducible
+
+ * Based on Hugo, free, open-source, and easy to install (a single binary)
+   + lightning fast (generates one page in one millisecond)
+   + general-purpose (not only for blogs)
+
+
+
+
+## 3. Bookdown: write an online book
+
+https://bookdown.org/yihui/bookdown/
+
+
 
 
 
