@@ -8,6 +8,6 @@ So, one day I realized three things.
 
 While, here comes the MD files, the GitHub-friendly document, the bridge from RMD to HTML/PDF/WORD.   
 MD file is a BRILLIANT solution.  
-Wanna check these MDs out?  [Note 1, data management](./note1.md); [Note 2, website](./note2.md); [Note 3, Xaringan slides](./note3.md). More to come.
+Wanna check these MDs out?  [Note 1, data management](./note1.md); [Note 2, website](./note2.md); [Note 3, Xaringan slides](./note3.md), [Note 4, causal inference](./note4.md). More to come.
 
 Any comments, suggestions, and ideas on my code are greatly appreciated! Please simply fork this repo and let's communicate!  

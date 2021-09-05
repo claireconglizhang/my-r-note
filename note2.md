@@ -124,3 +124,12 @@ Why blogdown?
 ## 3. Bookdown: write an online book
 
 <https://bookdown.org/yihui/bookdown/>
+
+## 4. A side note for tables in markdown
+
+A quick and neat way to put a table in your RMD file is just working
+with excel:
+
+The sheet is inserted into your RMD as a data table, meaning that all
+format, hyperlink, and whatever else you have other than number and text
+will be lost. Ways around this? While, hopefully blogdown?
