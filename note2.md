@@ -121,15 +121,26 @@ Why blogdown?
     -   lightning fast (generates one page in one millisecond)
     -   general-purpose (not only for blogs)
 
+to be continued..
+
 ## 3. Bookdown: write an online book
 
 <https://bookdown.org/yihui/bookdown/>
 
-## 4. A side note for tables in markdown
+## 4. A side note on tables
 
-A quick and neat way to put a table in your RMD file is just working
-with excel:
+4.1. A quick and neat way to put a table in your RMD file is just
+working with excel:
+
+``` r
+# d <- readxl::read_xlsx(here::here("the path", "the file"))
+# d %>% 
+#   knitr::kable()
+```
 
 The sheet is inserted into your RMD as a data table, meaning that all
 format, hyperlink, and whatever else you have other than number and text
-will be lost. Ways around this? While, hopefully blogdown?
+will be lost.
+
+More sophisticated way should be using {blogdown} since it’s way more
+powerful than {distill} but certainly demanding more learning.
