@@ -1,1 +1,1 @@
-It is what it is.
+For a quick look, please check out the md files. 
